@@ -1,10 +1,9 @@
-#!/usr/bin/env bash
+MAIN=main.cpp
+APP=example
 
-set -e
-
-if [ ! -d build ]; then
-    mkdir build
+if [-f $APP ]; then rm "$APP"
 fi
 
-g++ -std=c++17 -Wall -Wextra -pedantic main.cpp -o build/app
-./build/app
+g++ $MAIN -o $APP
+
+./$APP
