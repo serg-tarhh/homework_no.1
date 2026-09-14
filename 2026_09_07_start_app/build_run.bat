@@ -1,15 +1,15 @@
 @echo off
-setlocal
+chcp 1251 > log
+del log
 
-chcp 65001 > nul
+set MAIN=main.cpp
+set EXE=example.exe
 
-if not exist build mkdir build
+:: -fexec-charset=utf-8 в Windows не работает
+set CHARSET="-finput-charset=utf-8 -fexec-charset=windows-1251"
 
-g++ -std=c++17 -Wall -Wextra -pedantic main.cpp -o build\app.exe
-if errorlevel 1 (
-    echo Ошибка компиляции.
-    exit /b 1
-)
+if exist %EXE% del %EXE%
 
-build\app.exe
-endlocal
+g++ "%CHARSET%" %MAIN% -o %EXE%
+
+%EXE%
