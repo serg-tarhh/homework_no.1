@@ -1,6 +1,9 @@
 #include <iostream>
+#include <string>
 
 int main() {
-    std::cout << "Привет, мир!\n";
-    return 0;
+	std::cout << "Введите приветствие: ";
+	std::string str;
+	std::getline(std::cin, str);
+	std::cout << str << std::endl;
 }
